@@ -17,6 +17,7 @@ app.use(express.json());
 
 
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/products", require("./routes/productRoutes"));
 
 
 app.get("/", (req, res) => {
