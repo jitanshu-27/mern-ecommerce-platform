@@ -1,19 +1,37 @@
 const Product = require("../models/Product");
 
 
-const createProduct = async (req, res) => {
+const getProducts = async (req, res) => {
   try {
-    const product = await Product.create({
-      name: "iPhone 15",
-      description: "Latest Apple iPhone",
-      brand: "Apple",
-      category: "Mobile",
-      price: 99999,
-      countInStock: 10,
-      image: "https://example.com/iphone.jpg",
-    });
+    const products = await Product.find();
 
-    res.status(201).json({
+    res.json({
+      success: true,
+      count: products.length,
+      products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
+const getSingleProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    res.json({
       success: true,
       product,
     });
@@ -26,5 +44,6 @@ const createProduct = async (req, res) => {
 };
 
 module.exports = {
-  createProduct,
+  getProducts,
+  getSingleProduct,
 };
