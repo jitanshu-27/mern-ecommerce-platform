@@ -63,6 +63,12 @@ const orderSchema = mongoose.Schema(
 
     paidAt: Date,
 
+    paymentResult: {
+    id: String,
+    status: String,
+    updateTime: String,
+    },
+
     isDelivered: {
       type: Boolean,
       default: false,
