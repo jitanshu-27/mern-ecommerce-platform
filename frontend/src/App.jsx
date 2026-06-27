@@ -4,6 +4,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import MainLayout from "./layouts/MainLayout";
+
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import LoginPage from "./pages/LoginPage";
@@ -13,34 +15,40 @@ import CartPage from "./pages/CartPage";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
 
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
+      <MainLayout>
 
-        <Route
-          path="/product/:id"
-          element={<ProductPage />}
-        />
+        <Routes>
 
-        <Route
-          path="/login"
-          element={<LoginPage />}
-        />
+          <Route
+            path="/"
+            element={<HomePage />}
+          />
 
-        <Route
-          path="/register"
-          element={<RegisterPage />}
-        />
+          <Route
+            path="/product/:id"
+            element={<ProductPage />}
+          />
 
-        <Route
-          path="/cart"
-          element={<CartPage />}
-        />
+          <Route
+            path="/login"
+            element={<LoginPage />}
+          />
 
-      </Routes>
+          <Route
+            path="/register"
+            element={<RegisterPage />}
+          />
+
+          <Route
+            path="/cart"
+            element={<CartPage />}
+          />
+
+        </Routes>
+
+      </MainLayout>
+
     </BrowserRouter>
   );
 }
