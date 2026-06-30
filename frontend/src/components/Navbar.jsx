@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const { cartItems } = useCart();
+  const { userInfo, logout } = useAuth();
   return (
     <nav className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -26,9 +28,25 @@ const Navbar = () => {
               Cart ({cartItems.length})
             </Link>
 
-            <Link to="/login">
-              Login
-            </Link>
+            {
+              userInfo ? (
+                <>
+                  <Link to="/profile">
+                    Profile
+                  </Link>
+
+                  <button
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link to="/login">
+                  Login
+                </Link>
+              )
+            }
 
           </div>
 

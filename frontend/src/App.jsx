@@ -3,6 +3,8 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -11,6 +13,7 @@ import ProductPage from "./pages/ProductPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import CartPage from "./pages/CartPage";
+
 
 function App() {
   return (
@@ -43,6 +46,15 @@ function App() {
           <Route
             path="/cart"
             element={<CartPage />}
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
           />
 
         </Routes>
