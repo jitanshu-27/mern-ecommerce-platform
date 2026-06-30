@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 import api from "../services/api";
 
 const ProductPage = () => {
   const { id } = useParams();
+  const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     fetchProduct();
@@ -67,8 +70,9 @@ const ProductPage = () => {
         </p>
 
         <button
-              disabled={product.countInStock === 0}
-              className="mt-6 bg-black text-white px-6 py-3 rounded disabled:opacity-50"
+                onClick={() => addToCart(product)}
+                disabled={product.countInStock === 0}
+                className="mt-6 bg-black text-white px-6 py-3 rounded disabled:opacity-50"
               >
               {product.countInStock > 0
                 ? "Add To Cart"

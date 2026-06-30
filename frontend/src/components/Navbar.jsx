@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
+  const { cartItems } = useCart();
   return (
     <nav className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -21,7 +23,7 @@ const Navbar = () => {
             </Link>
 
             <Link to="/cart">
-              Cart
+              Cart ({cartItems.length})
             </Link>
 
             <Link to="/login">
