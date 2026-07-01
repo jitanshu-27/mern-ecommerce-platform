@@ -48,6 +48,18 @@ const Navbar = () => {
               )
             }
 
+            <>
+          <Link to="/dashboard">
+            Dashboard
+          </Link>
+
+          <button
+            onClick={logout}
+          >
+            Logout
+          </button>
+        </>
+
           </div>
 
         </div>

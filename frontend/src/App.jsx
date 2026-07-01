@@ -16,6 +16,8 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
+import DashboardPage from "./pages/DashboardPage";
+import MyOrdersPage from "./pages/MyOrdersPage";
 
 
 function App() {
@@ -83,6 +85,24 @@ function App() {
             element={
               <ProtectedRoute>
                 <OrderSuccessPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/my-orders"
+            element={
+              <ProtectedRoute>
+                <MyOrdersPage />
               </ProtectedRoute>
             }
           />
