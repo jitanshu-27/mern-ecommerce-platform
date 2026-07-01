@@ -15,6 +15,7 @@ import RegisterPage from "./pages/RegisterPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
+import OrderSuccessPage from "./pages/OrderSuccessPage";
 
 
 function App() {
@@ -73,6 +74,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <PaymentPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/success"
+            element={
+              <ProtectedRoute>
+                <OrderSuccessPage />
               </ProtectedRoute>
             }
           />
