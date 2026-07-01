@@ -16,12 +16,40 @@ export const CartProvider = ({ children }) => {
       : [];
   });
 
+  const [shippingAddress, setShippingAddress] =
+  useState(() => {
+    const savedAddress =
+      localStorage.getItem(
+        "shippingAddress"
+      );
+
+    return savedAddress
+      ? JSON.parse(savedAddress)
+      : {
+          address: "",
+          city: "",
+          postalCode: "",
+          country: "",
+        };
+  });
+
   useEffect(() => {
     localStorage.setItem(
       "cart",
       JSON.stringify(cartItems)
     );
   }, [cartItems]);
+
+  const saveShippingAddress = (
+  data
+) => {
+  setShippingAddress(data);
+
+  localStorage.setItem(
+    "shippingAddress",
+    JSON.stringify(data)
+  );
+};
 
   const addToCart = (product) => {
     const exists = cartItems.find(
@@ -64,6 +92,8 @@ export const CartProvider = ({ children }) => {
         cartItems,
         addToCart,
         removeFromCart,
+        shippingAddress,
+        saveShippingAddress,
       }}
     >
       {children}

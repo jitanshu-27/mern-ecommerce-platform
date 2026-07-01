@@ -1,4 +1,5 @@
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const {
@@ -67,6 +68,16 @@ const CartPage = () => {
             </h2>
 
           </div>
+
+          <div className="mt-6">
+          <Link
+            to="/checkout"
+            className="bg-black text-white px-6 py-3 rounded"
+          >
+            Proceed To Checkout
+          </Link>
+        </div>
+        
         </>
       )}
 
