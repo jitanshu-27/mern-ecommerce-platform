@@ -53,11 +53,6 @@ const Navbar = () => {
             Dashboard
           </Link>
 
-          <button
-            onClick={logout}
-          >
-            Logout
-          </button>
         </>
 
           </div>

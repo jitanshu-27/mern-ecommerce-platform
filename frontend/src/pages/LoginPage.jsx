@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 import { useAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -35,10 +36,11 @@ const LoginPage = () => {
         );
 
       login(data);
+      toast.success("Login Successful");
 
       navigate("/");
     } catch (error) {
-      alert("Login Failed");
+      toast.error("Login Failed");
     }
   };
 
