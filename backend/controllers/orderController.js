@@ -46,7 +46,6 @@ const getMyOrders = async (req, res) => {
 
     res.json({
       success: true,
-      count: orders.length,
       orders,
     });
   } catch (error) {

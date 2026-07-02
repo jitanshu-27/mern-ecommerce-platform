@@ -2,20 +2,46 @@ const Product = require("../models/Product");
 
 
 const getProducts = async (req, res) => {
-  try {
-    const products = await Product.find();
+  const pageSize = 6;
+  const page = Number(req.query.page) || 1;
 
-    res.json({
-      success: true,
-      count: products.length,
-      products,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+
+  const category = req.query.category
+    ? { category: req.query.category }
+    : {};
+
+  const minPrice = req.query.min
+    ? { price: { $gte: Number(req.query.min) } }
+    : {};
+
+  const maxPrice = req.query.max
+    ? { price: { $lte: Number(req.query.max) } }
+    : {};
+
+  const products = await Product.find({
+    ...keyword,
+    ...category,
+    ...minPrice,
+    ...maxPrice,
+  })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  const count = await Product.countDocuments();
+
+  res.json({
+    products,
+    page,
+    pages: Math.ceil(count / pageSize),
+  });
 };
 
 

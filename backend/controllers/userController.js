@@ -86,15 +86,57 @@ const loginUser = async (req, res) => {
 };
 
 
-const getProfile = async (req, res) => {
-  res.json({
-    success: true,
-    user: req.user,
-  });
+const getUserProfile = async (req, res) => {
+  try {
+    const user = req.user;
+
+    res.json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const updateUserProfile = async (req, res) => {
+  try {
+    const user = req.user;
+
+    user.name =
+      req.body.name || user.name;
+
+    user.email =
+      req.body.email || user.email;
+
+    if (req.body.password) {
+      user.password =
+        req.body.password;
+    }
+
+    const updatedUser =
+      await user.save();
+
+    res.json({
+      success: true,
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
 
 module.exports = {
   registerUser,
   loginUser,
-  getProfile,
+  getUserProfile,
+  updateUserProfile,
 };
