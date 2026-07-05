@@ -39,13 +39,11 @@ const ProductPage = () => {
   return (
     <div className="grid md:grid-cols-2 gap-10">
 
-      <div>
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full rounded-lg"
-        />
-      </div>
+      <img
+        src={`http://localhost:5000${product.image}`}
+        alt={product.name}
+        className="w-full rounded-lg"
+      />
 
       <div>
 

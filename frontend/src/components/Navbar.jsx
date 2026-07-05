@@ -5,10 +5,10 @@ import { useAuth } from "../context/AuthContext";
 const Navbar = () => {
   const { cartItems } = useCart();
   const { userInfo, logout } = useAuth();
+
   return (
     <nav className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4">
-
         <div className="flex justify-between items-center h-16">
 
           <Link
@@ -20,45 +20,41 @@ const Navbar = () => {
 
           <div className="flex gap-6">
 
-            <Link to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
 
             <Link to="/cart">
               Cart ({cartItems.length})
             </Link>
 
-            {
-              userInfo ? (
-                <>
-                  <Link to="/profile">
-                    Profile
-                  </Link>
+            {userInfo ? (
+              <>
+                <Link to="/dashboard">
+                  Dashboard
+                </Link>
 
-                  <button
-                    onClick={logout}
-                  >
-                    Logout
-                  </button>
-                </>
-              ) : (
+                <Link to="/profile">
+                  Profile
+                </Link>
+
+                <button onClick={logout}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
                 <Link to="/login">
                   Login
                 </Link>
-              )
-            }
 
-            <>
-          <Link to="/dashboard">
-            Dashboard
-          </Link>
-
-        </>
+                <Link to="/register">
+                  Register
+                </Link>
+              </>
+            )}
 
           </div>
 
         </div>
-
       </div>
     </nav>
   );

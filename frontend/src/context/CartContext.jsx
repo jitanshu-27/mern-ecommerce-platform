@@ -79,12 +79,31 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
+  const product = cartItems.find(
+    (item) => item._id === id
+  );
+
+  if (!product) return;
+
+  if (product.qty === 1) {
     setCartItems(
       cartItems.filter(
         (item) => item._id !== id
       )
     );
-  };
+  } else {
+    setCartItems(
+      cartItems.map((item) =>
+        item._id === id
+          ? {
+              ...item,
+              qty: item.qty - 1,
+            }
+          : item
+      )
+    );
+  }
+};
 
   return (
     <CartContext.Provider

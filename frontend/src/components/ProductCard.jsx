@@ -4,11 +4,10 @@ const ProductCard = ({ product }) => {
   return (
     <div className="border rounded-lg p-4 shadow">
 
-      <img
-        src={product.image}
-        alt={product.name}
-        className="h-48 w-full object-cover rounded"
-      />
+     <img
+      src={`http://localhost:5000${product.image}`}
+      alt={product.name}
+    />
 
       <h2 className="text-xl font-bold mt-3">
         {product.name}

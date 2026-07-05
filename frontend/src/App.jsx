@@ -18,6 +18,7 @@ import PaymentPage from "./pages/PaymentPage";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import DashboardPage from "./pages/DashboardPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
+import PlaceOrderPage from "./pages/PlaceOrderPage";
 
 
 function App() {
@@ -105,6 +106,11 @@ function App() {
                 <MyOrdersPage />
               </ProtectedRoute>
             }
+          />
+
+          <Route
+            path="/placeorder"
+            element={<PlaceOrderPage />}
           />
 
         </Routes>

@@ -90,7 +90,7 @@ const PaymentPage = () => {
                 }
               );
 
-              await createOrder();
+              localStorage.removeItem("tempOrderId");
 
               navigate(
                 "/success"
@@ -110,40 +110,6 @@ const PaymentPage = () => {
           "Payment Failed"
         );
       }
-    };
-
-  const createOrder =
-    async () => {
-
-      const orderItems =
-        cartItems.map(
-          (item) => ({
-            name:
-              item.name,
-            qty:
-              item.qty,
-            image:
-              item.image,
-            price:
-              item.price,
-            product:
-              item._id,
-          })
-        );
-
-      await api.post(
-        "/orders",
-        {
-          orderItems,
-
-          shippingAddress,
-
-          paymentMethod:
-            "Razorpay",
-
-          totalPrice,
-        }
-      );
     };
 
   return (

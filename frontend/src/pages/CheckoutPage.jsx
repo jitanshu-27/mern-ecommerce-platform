@@ -29,7 +29,7 @@ const CheckoutPage = () => {
       formData
     );
 
-    navigate("/payment");
+    navigate("/placeorder");
   };
 
   return (
