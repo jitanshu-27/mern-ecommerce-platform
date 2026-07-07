@@ -22,6 +22,7 @@ import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import DashboardPage from "./pages/admin/DashboardPage";
 import ProductsPage from "./pages/admin/ProductsPage";
 import CreateProductPage from "./pages/admin/CreateProductPage";
+import EditProductPage from "./pages/admin/EditProductPage";
 
 
 function App() {
@@ -130,6 +131,15 @@ function App() {
             element={
               <AdminProtectedRoute>
                 <CreateProductPage />
+              </AdminProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/products/:id/edit"
+            element={
+              <AdminProtectedRoute>
+                <EditProductPage />
               </AdminProtectedRoute>
             }
           />

@@ -118,11 +118,12 @@ const ProductsPage = () => {
 
               <td>
 
-                <button
+                <Link
+                  to={`/admin/products/${product._id}/edit`}
                   className="bg-blue-600 text-white px-3 py-1 rounded mr-2"
                 >
                   Edit
-                </button>
+                </Link>
 
                 <button
                   onClick={() =>
