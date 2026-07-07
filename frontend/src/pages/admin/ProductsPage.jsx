@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 const ProductsPage = () => {
 
@@ -21,6 +22,28 @@ const ProductsPage = () => {
       console.log(error);
     }
   };
+
+  const deleteHandler = async (id) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this product?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    await api.delete(`/products/${id}`);
+
+    toast.success("Product Deleted Successfully");
+
+    fetchProducts();
+
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message ||
+      "Delete Failed"
+    );
+  }
+};
 
   return (
 
@@ -100,6 +123,9 @@ const ProductsPage = () => {
                 </button>
 
                 <button
+                  onClick={() =>
+                    deleteHandler(product._id)
+                  }
                   className="bg-red-600 text-white px-3 py-1 rounded"
                 >
                   Delete
