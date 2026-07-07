@@ -26,31 +26,39 @@ const Navbar = () => {
               Cart ({cartItems.length})
             </Link>
 
-            {userInfo ? (
-              <>
-                <Link to="/dashboard">
-                  Dashboard
+           {userInfo ? (
+            <>
+              {userInfo.user.isAdmin ? (
+                <Link to="/admin">
+                  Admin Dashboard
                 </Link>
+              ) : (
+                <>
+                  <Link to="/profile">
+                    Profile
+                  </Link>
 
-                <Link to="/profile">
-                  Profile
-                </Link>
+                  <Link to="/my-orders">
+                    My Orders
+                  </Link>
+                </>
+              )}
 
-                <button onClick={logout}>
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
+              <button onClick={logout}>
+                   Logout
+              </button>
+                </>
+                ) : (
+                <>
                 <Link to="/login">
-                  Login
+                    Login
                 </Link>
 
-                <Link to="/register">
-                  Register
-                </Link>
-              </>
-            )}
+              <Link to="/register">
+                Register
+              </Link>
+            </>
+          )}
 
           </div>
 

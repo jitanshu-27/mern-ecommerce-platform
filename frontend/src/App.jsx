@@ -16,9 +16,10 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
-import DashboardPage from "./pages/DashboardPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
+import DashboardPage from "./pages/admin/DashboardPage";
 
 
 function App() {
@@ -91,15 +92,6 @@ function App() {
           />
 
           <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
             path="/my-orders"
             element={
               <ProtectedRoute>
@@ -111,6 +103,15 @@ function App() {
           <Route
             path="/placeorder"
             element={<PlaceOrderPage />}
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminProtectedRoute>
+                <DashboardPage />
+              </AdminProtectedRoute>
+            }
           />
 
         </Routes>

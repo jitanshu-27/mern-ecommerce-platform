@@ -38,7 +38,13 @@ const LoginPage = () => {
       login(data);
       toast.success("Login Successful");
 
-      navigate("/");
+      if (data.user.isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/profile");
+      }
+
+      navigate("/dashboard");
     } catch (error) {
       toast.error("Login Failed");
     }
