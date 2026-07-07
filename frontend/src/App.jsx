@@ -21,6 +21,7 @@ import PlaceOrderPage from "./pages/PlaceOrderPage";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import DashboardPage from "./pages/admin/DashboardPage";
 import ProductsPage from "./pages/admin/ProductsPage";
+import CreateProductPage from "./pages/admin/CreateProductPage";
 
 
 function App() {
@@ -120,6 +121,15 @@ function App() {
             element={
               <AdminProtectedRoute>
                 <ProductsPage />
+              </AdminProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/products/create"
+            element={
+              <AdminProtectedRoute>
+                <CreateProductPage />
               </AdminProtectedRoute>
             }
           />

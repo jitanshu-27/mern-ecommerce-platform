@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const ProductsPage = () => {
 
@@ -55,11 +56,12 @@ const ProductsPage = () => {
           Products
         </h1>
 
-        <button
+        <Link
+          to="/admin/products/create"
           className="bg-black text-white px-5 py-2 rounded"
         >
           Add Product
-        </button>
+        </Link>
 
       </div>
 
