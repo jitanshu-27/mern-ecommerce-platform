@@ -20,6 +20,7 @@ import MyOrdersPage from "./pages/MyOrdersPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import DashboardPage from "./pages/admin/DashboardPage";
+import ProductsPage from "./pages/admin/ProductsPage";
 
 
 function App() {
@@ -110,6 +111,15 @@ function App() {
             element={
               <AdminProtectedRoute>
                 <DashboardPage />
+              </AdminProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/products"
+            element={
+              <AdminProtectedRoute>
+                <ProductsPage />
               </AdminProtectedRoute>
             }
           />
